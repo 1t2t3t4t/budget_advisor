@@ -12,10 +12,10 @@ class BudgetInputView extends StatefulWidget {
   }
 }
 
-class _BudgetInputViewState extends State<BudgetInputView> with WidgetsBindingObserver {
+class _BudgetInputViewState extends State<BudgetInputView>
+    with WidgetsBindingObserver {
   final TextEditingController _inputTextController = TextEditingController();
   final FocusNode _inputFocusNode = FocusNode();
-
 
   @override
   void initState() {
@@ -58,6 +58,7 @@ class _BudgetInputViewState extends State<BudgetInputView> with WidgetsBindingOb
             onSubmitted: (text) {
               if (text.isNotEmpty) {
                 final amount = double.parse(text);
+                _inputTextController.clear();
                 context.read<BudgetInputBloc>().add(BudgetInputAdd(amount));
               }
             },
@@ -66,6 +67,7 @@ class _BudgetInputViewState extends State<BudgetInputView> with WidgetsBindingOb
         CupertinoButton(
             onPressed: () {
               final amount = double.parse(_inputTextController.value.text);
+              _inputTextController.clear();
               context.read<BudgetInputBloc>().add(BudgetInputAdd(amount));
             },
             child: const Text("Add"))
@@ -83,7 +85,6 @@ class _BudgetInputViewState extends State<BudgetInputView> with WidgetsBindingOb
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BudgetInputBloc, BudgetInputState>(
-
       builder: (context, state) {
         return Column(
           children: [_inputWidgets(context), _infoDisplay(context, state)],

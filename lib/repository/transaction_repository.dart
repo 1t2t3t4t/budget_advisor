@@ -4,7 +4,6 @@ import 'package:budget_advisor/model/transaction.dart';
 import 'package:budget_advisor/repository/repository.dart';
 
 class TransactionRepository implements Repository<Transaction> {
-
   final List<Transaction> _collections = [];
 
   @override
@@ -14,7 +13,9 @@ class TransactionRepository implements Repository<Transaction> {
 
   @override
   FutureOr<List<Transaction>> findAll({Predicate<Transaction>? predicate}) {
-    return _collections.where((element) => predicate != null ? predicate(element) : true).toList();
+    return _collections
+        .where((element) => predicate != null ? predicate(element) : true)
+        .toList();
   }
 
   @override
@@ -28,7 +29,8 @@ class TransactionRepository implements Repository<Transaction> {
   }
 
   @override
-  FutureOr<void> update(Predicate<Transaction> predicate, Apply<Transaction> apply) {
+  FutureOr<void> update(
+      Predicate<Transaction> predicate, Apply<Transaction> apply) {
     for (final model in _collections) {
       if (predicate(model)) {
         apply(model);

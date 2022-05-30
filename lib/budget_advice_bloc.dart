@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 
 abstract class BudgetAdviceBlocEvent {
-  factory BudgetAdviceBlocEvent.changeBudget(double monthlyAllocation, double weekDayAllocation) => ChangeBudgetEvent(monthlyAllocation, weekDayAllocation);
+  factory BudgetAdviceBlocEvent.changeBudget(
+          double monthlyAllocation, double weekDayAllocation) =>
+      ChangeBudgetEvent(monthlyAllocation, weekDayAllocation);
 }
 
 class ChangeBudgetEvent implements BudgetAdviceBlocEvent {

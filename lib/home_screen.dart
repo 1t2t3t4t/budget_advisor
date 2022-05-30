@@ -27,13 +27,18 @@ class HomeScreen extends StatelessWidget {
             appBar: const CupertinoNavigationBar(
               middle: Text("Budget Advisor"),
             ),
-            body: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ListView(
-                children: const [
-                  BudgetAdviceView(),
-                  BudgetInputView()
-                ],
+            body: GestureDetector(
+              onTap: () {
+                final focusScope = FocusScope.of(context);
+                if (focusScope.hasFocus) {
+                  focusScope.unfocus();
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ListView(
+                  children: const [BudgetAdviceView(), BudgetInputView()],
+                ),
               ),
             )));
   }

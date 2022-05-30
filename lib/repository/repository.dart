@@ -4,7 +4,7 @@ typedef Predicate<T> = bool Function(T);
 typedef Apply<T> = T Function(T);
 
 mixin Repository<Model> {
-  FutureOr<List<Model>> findAll({ Predicate<Model>? predicate });
+  FutureOr<List<Model>> findAll({Predicate<Model>? predicate});
   FutureOr<Model?> findOne(Predicate<Model> predicate);
 
   FutureOr<void> insert(List<Model> models);

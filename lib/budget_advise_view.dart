@@ -27,8 +27,9 @@ class BudgetAdviceView extends StatelessWidget {
           max: 1.0,
         ),
         Text(
-            "Workday Allocation Rate ${(state.weekDayAllocation * 100).toStringAsFixed(2)}%",
-        style: const TextStyle(fontWeight: FontWeight.w600),)
+          "Workday Allocation Rate ${(state.weekDayAllocation * 100).toStringAsFixed(2)}%",
+          style: const TextStyle(fontWeight: FontWeight.w600),
+        )
       ],
     );
   }

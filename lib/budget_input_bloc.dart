@@ -2,9 +2,7 @@ import 'package:budget_advisor/model/transaction.dart';
 import 'package:budget_advisor/repository/repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-abstract class BudgetInputEvent {
-
-}
+abstract class BudgetInputEvent {}
 
 class BudgetInputAdd implements BudgetInputEvent {
   final double amount;
@@ -19,19 +17,20 @@ class BudgetInputState {
 }
 
 class BudgetInputBloc extends Bloc<BudgetInputEvent, BudgetInputState> {
-
   final Repository<Transaction> _transactionRepository;
-
 
   BudgetInputBloc(super.initialState, this._transactionRepository) {
     on<BudgetInputAdd>((event, emit) {
-      _transactionRepository.insert([Transaction(event.amount, DateTime.now())]);
+      _transactionRepository
+          .insert([Transaction(event.amount, DateTime.now())]);
       _latestState().then(emit);
     });
   }
-  
+
   Future<BudgetInputState> _latestState() async {
     final transactions = await _transactionRepository.findAll();
-    return BudgetInputState(transactions.map((e) => e.amount).reduce((value, element) => value + element));
+    return BudgetInputState(transactions
+        .map((e) => e.amount)
+        .reduce((value, element) => value + element));
   }
 }

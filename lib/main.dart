@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
   Widget app() {
     return MultiRepositoryProvider(
         providers: [
-          RepositoryProvider<Repository<Transaction>>.value(value: TransactionRepository())
+          RepositoryProvider<Repository<Transaction>>.value(
+              value: TransactionRepository())
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
@@ -23,8 +24,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           home: const HomeScreen(),
-        )
-    );
+        ));
   }
 
   @override
