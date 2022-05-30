@@ -37,20 +37,18 @@ class BudgetAdviceView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BudgetAdviceBloc, BudgetAdviceState>(
       builder: (context, state) {
-        return Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              input(context, state),
-              const SizedBox(height: 16),
-              Text("Weekday Budget: ${state.weekDayBudget.toStringAsFixed(2)}"),
-              Text("Weekend Budget: ${state.weekEndBudget.toStringAsFixed(2)}"),
-              Text(
-                  "Weekday Daily Budget: ${state.weekDayDailyBudget.toStringAsFixed(2)}"),
-              Text(
-                  "Weekend Daily Budget: ${state.weekEndDailyBudget.toStringAsFixed(2)}")
-            ],
-          ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            input(context, state),
+            const SizedBox(height: 16),
+            Text("Weekday Budget: ${state.weekDayBudget.toStringAsFixed(2)}"),
+            Text("Weekend Budget: ${state.weekEndBudget.toStringAsFixed(2)}"),
+            Text(
+                "Weekday Daily Budget: ${state.weekDayDailyBudget.toStringAsFixed(2)}"),
+            Text(
+                "Weekend Daily Budget: ${state.weekEndDailyBudget.toStringAsFixed(2)}")
+          ],
         );
       },
     );
